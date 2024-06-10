@@ -1,5 +1,5 @@
 section .data:
-    hello: "Hello, world!\n"
+    hello: "Hello, world!\n\0"
 section .text:
 .start:
     push hello
@@ -7,9 +7,11 @@ section .text:
     dup
     ld
     push .break
+    xchng
     jz
     push 0
     st
+    pop
     inc
     push .loop
     jmp

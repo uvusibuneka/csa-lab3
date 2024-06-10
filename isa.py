@@ -23,6 +23,7 @@ class Variable:
         return Variable(data["name"], data["address"], data["data"], data["is_string"])
 
 class Opcode(str, Enum):
+    NOP = "nop"
     XCHNG = "xchng"
     PUSH = "push"
     POP = "pop"
@@ -53,7 +54,7 @@ class Opcode(str, Enum):
 
 
 class Command:
-    def __init__(self, opcode: Opcode, operand=None):
+    def __init__(self, opcode=Opcode.NOP, operand=None):
         self.opcode = opcode
         self.operand = operand
 
@@ -71,21 +72,6 @@ class Command:
     def from_dict(data):
         return Command(Opcode(data["opcode"]), data.get("operand"))
 
-
-class MachineCodeLine:
-    def __init__(self, line_number: int, command: Command):
-        self.line_number = line_number
-        self.command = command
-
-    def __str__(self):
-        return f"{self.line_number}: {self.command}"
-
-    def to_dict(self):
-        return {"line_number": self.line_number, "command": self.command.to_dict()}
-
-    @staticmethod
-    def from_dict(data):
-        return MachineCodeLine(data["line_number"], Command.from_dict(data["command"]))
 
 def to_json_struct(obj):
     if isinstance(obj, tuple):
@@ -109,9 +95,7 @@ def write_to_json(filename: str, code_lines: list, memory: list):
 def read_from_json(filename: str):
     with open(filename) as f:
         data = json.load(f)
-        code_lines = [MachineCodeLine.from_dict(line) for line in data["code"]]
-        memory = [Variable.from_dict(var) for var in data["memory"]]
-        return code_lines, memory
+        return data["code"], data["memory"]
 
 def write_code(filename: str, code: str):
     with open(filename, mode="bw") as f:

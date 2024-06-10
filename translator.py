@@ -83,12 +83,7 @@ def translate_section_text_stage_1(section_text, address):
             labels[line[:-1]] = address
         else:
             commands.append(line)
-            address += 1
-            if (
-                len(line.split(" ")) == 2
-            ):
-                address += 1  # Если команда с операндом, то указатель еще раз смещаем (тк на след. ячейке памяти будет лежать операнд)
-
+            address += 1 
     return "\n".join(commands), labels
 
 
@@ -162,12 +157,13 @@ def translate_source(source):
     section_text, labels = translate_section_text_stage_1(
         section_text, section_text_address
     )
+    print(labels)
     commands = translate_section_text_stage_2(section_text, variables, labels)
     code : list[tuple[str,str,str]] = []
     memory : list[tuple[str,str]] = []
-
+    print(labels)
     command_address = 0
-    memory_address = 0
+    memory_address = 3
     memory, memory_address = translate_variables(
         variables, memory_address, memory
     )
