@@ -93,7 +93,6 @@ def translate_section_text_stage_1(section_text, address):
 
 
 def translate_command(line, variables, labels):
-    print("Line is ",line)
     parts = line.split(" ")
     opcode = Opcode(parts[0])
     if opcode == Opcode.PUSH:
