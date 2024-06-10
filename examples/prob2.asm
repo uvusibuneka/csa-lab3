@@ -1,10 +1,10 @@
-section .data
+section .data:
     io_addr: 0
     a: 1
     b: 2
     border: 100
     even: 1
-section .code
+section .text:
 .start:
 .loop:
    push b

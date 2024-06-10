@@ -1,9 +1,9 @@
-section .data
-    hello: "\n>What is your name?\n>", 0
-    bye: "\n>Hello, ", 0
+section .data:
+    hello: "\n>What is your name?\n>"
+    bye: "\n>Hello, "
     io_addr: 0
-    buff: "                                       ", 0
-section .code
+    buff: "                                       "
+section .text:
 .start:
     push .back_name
     push hello

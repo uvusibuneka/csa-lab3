@@ -1,7 +1,7 @@
-section .data
+section .data:
     io: .word 0
 
-section .code
+section .text
 .start:
 .loop:
     push io

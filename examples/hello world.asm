@@ -1,6 +1,6 @@
-section .data
-hello: "Hello, world!\n", 0
-section .code
+section .data:
+    hello: "Hello, world!\n"
+section .text:
 .start:
     push hello
 .loop:
