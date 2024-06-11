@@ -3,4 +3,5 @@ proc_scheme.png
 __pycache__/*
 input*.txt
 output.txt
+file_log.txt
 

@@ -76,12 +76,11 @@ class Command:
 def to_json_struct(obj):
     if isinstance(obj, tuple):
         return list(obj)
-    elif isinstance(obj, list):
+    if isinstance(obj, list):
         return [to_json_struct(item) for item in obj]
-    elif isinstance(obj, dict):
+    if isinstance(obj, dict):
         return {key: to_json_struct(value) for key, value in obj.items()}
-    else:
-        return obj
+    return obj
 
 def write_to_json(filename: str, code_lines: list, memory: list):
     data = {

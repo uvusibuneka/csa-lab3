@@ -169,8 +169,7 @@ class ControlUnit:
                 self.address_instr_mem = self.program_counter
                 self.data_path.signal_data_pop()
                 return True
-            else:
-                self.data_path.data_stack.pop()
+            self.data_path.data_stack.pop()
 
         if opcode is Opcode.JNZ:
             if not self.data_path.zero():
@@ -178,8 +177,7 @@ class ControlUnit:
                 self.address_instr_mem = self.program_counter
                 self.data_path.signal_data_pop()
                 return True
-            else:
-                self.data_path.data_stack.pop()
+            self.data_path.data_stack.pop()
 
         if opcode is Opcode.JL:
             if self.data_path.negative():
@@ -187,8 +185,7 @@ class ControlUnit:
                 self.address_instr_mem = self.program_counter
                 self.data_path.signal_data_pop()
                 return True
-            else:
-                self.data_path.data_stack.pop()
+            self.data_path.data_stack.pop()
 
         if opcode is Opcode.JG:
             if not self.data_path.negative() and not self.data_path.zero():
@@ -203,8 +200,7 @@ class ControlUnit:
                 self.address_instr_mem = self.program_counter
                 self.data_path.signal_data_pop()
                 return True
-            else:
-                self.data_path.data_stack.pop()
+            self.data_path.data_stack.pop()
 
         if opcode is Opcode.JLE:
             if self.data_path.negative() or self.data_path.zero():
@@ -212,8 +208,7 @@ class ControlUnit:
                 self.address_instr_mem = self.program_counter
                 self.data_path.signal_data_pop()
                 return True
-            else:
-                self.data_path.data_stack.pop()
+            self.data_path.data_stack.pop()
 
         if opcode is Opcode.CALL:
             self.signal_ret_push()

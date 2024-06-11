@@ -1,0 +1,600 @@
+source_code: |
+  section .data:
+      io: 0
+  section .text:
+  .start:
+  .loop:
+      push io
+      ld
+      ld
+      push .exit
+      xchng
+      jz
+      push io
+      ld
+      st
+      push .loop
+      jmp
+  .exit:
+      hlt
+stdin: |
+  uvusibuneka 
+
+stdout: |
+  uvusibuneka '
+  '
+
+out_code_readable: |
+  {
+      "code": [
+          [
+              "0",
+              "push",
+              "3"
+          ],
+          [
+              "1",
+              "ld",
+              ""
+          ],
+          [
+              "2",
+              "ld",
+              ""
+          ],
+          [
+              "3",
+              "push",
+              "11"
+          ],
+          [
+              "4",
+              "xchng",
+              ""
+          ],
+          [
+              "5",
+              "jz",
+              ""
+          ],
+          [
+              "6",
+              "push",
+              "3"
+          ],
+          [
+              "7",
+              "ld",
+              ""
+          ],
+          [
+              "8",
+              "st",
+              ""
+          ],
+          [
+              "9",
+              "push",
+              "0"
+          ],
+          [
+              "10",
+              "jmp",
+              ""
+          ],
+          [
+              "11",
+              "hlt",
+              ""
+          ]
+      ],
+      "memory": [
+          [
+              "3",
+              "0"
+          ]
+      ]
+  }
+out_log: | 
+  DEBUG   machine:simulation    PC:   0 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0]
+  DEBUG   machine:simulation    PC:   1 ADDR:   3 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0]
+  DEBUG   machine:simulation    PC:   2 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND ld        ld
+  DEBUG   machine:get_char      input: 'u'
+  INFO    machine:simulation    TOS: 117
+  INFO    machine:simulation    STACK: [0]
+  DEBUG   machine:simulation    PC:   3 ADDR:   0 MEM_OUT:   0 TOS: 117 COMMAND push      push 11
+  INFO    machine:simulation    TOS: 11
+  INFO    machine:simulation    STACK: [0, 117]
+  DEBUG   machine:simulation    PC:   4 ADDR:   0 MEM_OUT:   0 TOS:  11 COMMAND xchng     xchng
+  INFO    machine:simulation    TOS: 117
+  INFO    machine:simulation    STACK: [0, 11]
+  DEBUG   machine:simulation    PC:   5 ADDR:   0 MEM_OUT:   0 TOS: 117 COMMAND jz        jz
+  INFO    machine:simulation    TOS: 117
+  INFO    machine:simulation    STACK: [0]
+  DEBUG   machine:simulation    PC:   6 ADDR:   0 MEM_OUT:   0 TOS: 117 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117]
+  DEBUG   machine:simulation    PC:   7 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117]
+  DEBUG   machine:simulation    PC:   8 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND st        st
+  DEBUG   machine:signal_wr     output: '' << 'u'
+  INFO    machine:simulation    TOS: 117
+  INFO    machine:simulation    STACK: [0]
+  DEBUG   machine:simulation    PC:   9 ADDR:   0 MEM_OUT:   0 TOS: 117 COMMAND push      push 0
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117]
+  DEBUG   machine:simulation    PC:  10 ADDR:   0 MEM_OUT:   0 TOS:   0 COMMAND jmp       jmp
+  INFO    machine:simulation    TOS: 117
+  INFO    machine:simulation    STACK: [0]
+  DEBUG   machine:simulation    PC:   0 ADDR:   0 MEM_OUT:   0 TOS: 117 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117]
+  DEBUG   machine:simulation    PC:   1 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117]
+  DEBUG   machine:simulation    PC:   2 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND ld        ld
+  DEBUG   machine:get_char      input: 'v'
+  INFO    machine:simulation    TOS: 118
+  INFO    machine:simulation    STACK: [0, 117]
+  DEBUG   machine:simulation    PC:   3 ADDR:   0 MEM_OUT:   0 TOS: 118 COMMAND push      push 11
+  INFO    machine:simulation    TOS: 11
+  INFO    machine:simulation    STACK: [0, 117, 118]
+  DEBUG   machine:simulation    PC:   4 ADDR:   0 MEM_OUT:   0 TOS:  11 COMMAND xchng     xchng
+  INFO    machine:simulation    TOS: 118
+  INFO    machine:simulation    STACK: [0, 117, 11]
+  DEBUG   machine:simulation    PC:   5 ADDR:   0 MEM_OUT:   0 TOS: 118 COMMAND jz        jz
+  INFO    machine:simulation    TOS: 118
+  INFO    machine:simulation    STACK: [0, 117]
+  DEBUG   machine:simulation    PC:   6 ADDR:   0 MEM_OUT:   0 TOS: 118 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118]
+  DEBUG   machine:simulation    PC:   7 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118]
+  DEBUG   machine:simulation    PC:   8 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND st        st
+  DEBUG   machine:signal_wr     output: 'u' << 'v'
+  INFO    machine:simulation    TOS: 118
+  INFO    machine:simulation    STACK: [0, 117]
+  DEBUG   machine:simulation    PC:   9 ADDR:   0 MEM_OUT:   0 TOS: 118 COMMAND push      push 0
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118]
+  DEBUG   machine:simulation    PC:  10 ADDR:   0 MEM_OUT:   0 TOS:   0 COMMAND jmp       jmp
+  INFO    machine:simulation    TOS: 118
+  INFO    machine:simulation    STACK: [0, 117]
+  DEBUG   machine:simulation    PC:   0 ADDR:   0 MEM_OUT:   0 TOS: 118 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118]
+  DEBUG   machine:simulation    PC:   1 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118]
+  DEBUG   machine:simulation    PC:   2 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND ld        ld
+  DEBUG   machine:get_char      input: 'u'
+  INFO    machine:simulation    TOS: 117
+  INFO    machine:simulation    STACK: [0, 117, 118]
+  DEBUG   machine:simulation    PC:   3 ADDR:   0 MEM_OUT:   0 TOS: 117 COMMAND push      push 11
+  INFO    machine:simulation    TOS: 11
+  INFO    machine:simulation    STACK: [0, 117, 118, 117]
+  DEBUG   machine:simulation    PC:   4 ADDR:   0 MEM_OUT:   0 TOS:  11 COMMAND xchng     xchng
+  INFO    machine:simulation    TOS: 117
+  INFO    machine:simulation    STACK: [0, 117, 118, 11]
+  DEBUG   machine:simulation    PC:   5 ADDR:   0 MEM_OUT:   0 TOS: 117 COMMAND jz        jz
+  INFO    machine:simulation    TOS: 117
+  INFO    machine:simulation    STACK: [0, 117, 118]
+  DEBUG   machine:simulation    PC:   6 ADDR:   0 MEM_OUT:   0 TOS: 117 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117]
+  DEBUG   machine:simulation    PC:   7 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117]
+  DEBUG   machine:simulation    PC:   8 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND st        st
+  DEBUG   machine:signal_wr     output: 'uv' << 'u'
+  INFO    machine:simulation    TOS: 117
+  INFO    machine:simulation    STACK: [0, 117, 118]
+  DEBUG   machine:simulation    PC:   9 ADDR:   0 MEM_OUT:   0 TOS: 117 COMMAND push      push 0
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117]
+  DEBUG   machine:simulation    PC:  10 ADDR:   0 MEM_OUT:   0 TOS:   0 COMMAND jmp       jmp
+  INFO    machine:simulation    TOS: 117
+  INFO    machine:simulation    STACK: [0, 117, 118]
+  DEBUG   machine:simulation    PC:   0 ADDR:   0 MEM_OUT:   0 TOS: 117 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117]
+  DEBUG   machine:simulation    PC:   1 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117]
+  DEBUG   machine:simulation    PC:   2 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND ld        ld
+  DEBUG   machine:get_char      input: 's'
+  INFO    machine:simulation    TOS: 115
+  INFO    machine:simulation    STACK: [0, 117, 118, 117]
+  DEBUG   machine:simulation    PC:   3 ADDR:   0 MEM_OUT:   0 TOS: 115 COMMAND push      push 11
+  INFO    machine:simulation    TOS: 11
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115]
+  DEBUG   machine:simulation    PC:   4 ADDR:   0 MEM_OUT:   0 TOS:  11 COMMAND xchng     xchng
+  INFO    machine:simulation    TOS: 115
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 11]
+  DEBUG   machine:simulation    PC:   5 ADDR:   0 MEM_OUT:   0 TOS: 115 COMMAND jz        jz
+  INFO    machine:simulation    TOS: 115
+  INFO    machine:simulation    STACK: [0, 117, 118, 117]
+  DEBUG   machine:simulation    PC:   6 ADDR:   0 MEM_OUT:   0 TOS: 115 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115]
+  DEBUG   machine:simulation    PC:   7 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115]
+  DEBUG   machine:simulation    PC:   8 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND st        st
+  DEBUG   machine:signal_wr     output: 'uvu' << 's'
+  INFO    machine:simulation    TOS: 115
+  INFO    machine:simulation    STACK: [0, 117, 118, 117]
+  DEBUG   machine:simulation    PC:   9 ADDR:   0 MEM_OUT:   0 TOS: 115 COMMAND push      push 0
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115]
+  DEBUG   machine:simulation    PC:  10 ADDR:   0 MEM_OUT:   0 TOS:   0 COMMAND jmp       jmp
+  INFO    machine:simulation    TOS: 115
+  INFO    machine:simulation    STACK: [0, 117, 118, 117]
+  DEBUG   machine:simulation    PC:   0 ADDR:   0 MEM_OUT:   0 TOS: 115 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115]
+  DEBUG   machine:simulation    PC:   1 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115]
+  DEBUG   machine:simulation    PC:   2 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND ld        ld
+  DEBUG   machine:get_char      input: 'i'
+  INFO    machine:simulation    TOS: 105
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115]
+  DEBUG   machine:simulation    PC:   3 ADDR:   0 MEM_OUT:   0 TOS: 105 COMMAND push      push 11
+  INFO    machine:simulation    TOS: 11
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105]
+  DEBUG   machine:simulation    PC:   4 ADDR:   0 MEM_OUT:   0 TOS:  11 COMMAND xchng     xchng
+  INFO    machine:simulation    TOS: 105
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 11]
+  DEBUG   machine:simulation    PC:   5 ADDR:   0 MEM_OUT:   0 TOS: 105 COMMAND jz        jz
+  INFO    machine:simulation    TOS: 105
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115]
+  DEBUG   machine:simulation    PC:   6 ADDR:   0 MEM_OUT:   0 TOS: 105 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105]
+  DEBUG   machine:simulation    PC:   7 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105]
+  DEBUG   machine:simulation    PC:   8 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND st        st
+  DEBUG   machine:signal_wr     output: 'uvus' << 'i'
+  INFO    machine:simulation    TOS: 105
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115]
+  DEBUG   machine:simulation    PC:   9 ADDR:   0 MEM_OUT:   0 TOS: 105 COMMAND push      push 0
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105]
+  DEBUG   machine:simulation    PC:  10 ADDR:   0 MEM_OUT:   0 TOS:   0 COMMAND jmp       jmp
+  INFO    machine:simulation    TOS: 105
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115]
+  DEBUG   machine:simulation    PC:   0 ADDR:   0 MEM_OUT:   0 TOS: 105 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105]
+  DEBUG   machine:simulation    PC:   1 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105]
+  DEBUG   machine:simulation    PC:   2 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND ld        ld
+  DEBUG   machine:get_char      input: 'b'
+  INFO    machine:simulation    TOS: 98
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105]
+  DEBUG   machine:simulation    PC:   3 ADDR:   0 MEM_OUT:   0 TOS:  98 COMMAND push      push 11
+  INFO    machine:simulation    TOS: 11
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98]
+  DEBUG   machine:simulation    PC:   4 ADDR:   0 MEM_OUT:   0 TOS:  11 COMMAND xchng     xchng
+  INFO    machine:simulation    TOS: 98
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 11]
+  DEBUG   machine:simulation    PC:   5 ADDR:   0 MEM_OUT:   0 TOS:  98 COMMAND jz        jz
+  INFO    machine:simulation    TOS: 98
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105]
+  DEBUG   machine:simulation    PC:   6 ADDR:   0 MEM_OUT:   0 TOS:  98 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98]
+  DEBUG   machine:simulation    PC:   7 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98]
+  DEBUG   machine:simulation    PC:   8 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND st        st
+  DEBUG   machine:signal_wr     output: 'uvusi' << 'b'
+  INFO    machine:simulation    TOS: 98
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105]
+  DEBUG   machine:simulation    PC:   9 ADDR:   0 MEM_OUT:   0 TOS:  98 COMMAND push      push 0
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98]
+  DEBUG   machine:simulation    PC:  10 ADDR:   0 MEM_OUT:   0 TOS:   0 COMMAND jmp       jmp
+  INFO    machine:simulation    TOS: 98
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105]
+  DEBUG   machine:simulation    PC:   0 ADDR:   0 MEM_OUT:   0 TOS:  98 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98]
+  DEBUG   machine:simulation    PC:   1 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98]
+  DEBUG   machine:simulation    PC:   2 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND ld        ld
+  DEBUG   machine:get_char      input: 'u'
+  INFO    machine:simulation    TOS: 117
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98]
+  DEBUG   machine:simulation    PC:   3 ADDR:   0 MEM_OUT:   0 TOS: 117 COMMAND push      push 11
+  INFO    machine:simulation    TOS: 11
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117]
+  DEBUG   machine:simulation    PC:   4 ADDR:   0 MEM_OUT:   0 TOS:  11 COMMAND xchng     xchng
+  INFO    machine:simulation    TOS: 117
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 11]
+  DEBUG   machine:simulation    PC:   5 ADDR:   0 MEM_OUT:   0 TOS: 117 COMMAND jz        jz
+  INFO    machine:simulation    TOS: 117
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98]
+  DEBUG   machine:simulation    PC:   6 ADDR:   0 MEM_OUT:   0 TOS: 117 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117]
+  DEBUG   machine:simulation    PC:   7 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117]
+  DEBUG   machine:simulation    PC:   8 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND st        st
+  DEBUG   machine:signal_wr     output: 'uvusib' << 'u'
+  INFO    machine:simulation    TOS: 117
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98]
+  DEBUG   machine:simulation    PC:   9 ADDR:   0 MEM_OUT:   0 TOS: 117 COMMAND push      push 0
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117]
+  DEBUG   machine:simulation    PC:  10 ADDR:   0 MEM_OUT:   0 TOS:   0 COMMAND jmp       jmp
+  INFO    machine:simulation    TOS: 117
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98]
+  DEBUG   machine:simulation    PC:   0 ADDR:   0 MEM_OUT:   0 TOS: 117 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117]
+  DEBUG   machine:simulation    PC:   1 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117]
+  DEBUG   machine:simulation    PC:   2 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND ld        ld
+  DEBUG   machine:get_char      input: 'n'
+  INFO    machine:simulation    TOS: 110
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117]
+  DEBUG   machine:simulation    PC:   3 ADDR:   0 MEM_OUT:   0 TOS: 110 COMMAND push      push 11
+  INFO    machine:simulation    TOS: 11
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110]
+  DEBUG   machine:simulation    PC:   4 ADDR:   0 MEM_OUT:   0 TOS:  11 COMMAND xchng     xchng
+  INFO    machine:simulation    TOS: 110
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 11]
+  DEBUG   machine:simulation    PC:   5 ADDR:   0 MEM_OUT:   0 TOS: 110 COMMAND jz        jz
+  INFO    machine:simulation    TOS: 110
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117]
+  DEBUG   machine:simulation    PC:   6 ADDR:   0 MEM_OUT:   0 TOS: 110 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110]
+  DEBUG   machine:simulation    PC:   7 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110]
+  DEBUG   machine:simulation    PC:   8 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND st        st
+  DEBUG   machine:signal_wr     output: 'uvusibu' << 'n'
+  INFO    machine:simulation    TOS: 110
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117]
+  DEBUG   machine:simulation    PC:   9 ADDR:   0 MEM_OUT:   0 TOS: 110 COMMAND push      push 0
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110]
+  DEBUG   machine:simulation    PC:  10 ADDR:   0 MEM_OUT:   0 TOS:   0 COMMAND jmp       jmp
+  INFO    machine:simulation    TOS: 110
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117]
+  DEBUG   machine:simulation    PC:   0 ADDR:   0 MEM_OUT:   0 TOS: 110 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110]
+  DEBUG   machine:simulation    PC:   1 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110]
+  DEBUG   machine:simulation    PC:   2 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND ld        ld
+  DEBUG   machine:get_char      input: 'e'
+  INFO    machine:simulation    TOS: 101
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110]
+  DEBUG   machine:simulation    PC:   3 ADDR:   0 MEM_OUT:   0 TOS: 101 COMMAND push      push 11
+  INFO    machine:simulation    TOS: 11
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101]
+  DEBUG   machine:simulation    PC:   4 ADDR:   0 MEM_OUT:   0 TOS:  11 COMMAND xchng     xchng
+  INFO    machine:simulation    TOS: 101
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 11]
+  DEBUG   machine:simulation    PC:   5 ADDR:   0 MEM_OUT:   0 TOS: 101 COMMAND jz        jz
+  INFO    machine:simulation    TOS: 101
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110]
+  DEBUG   machine:simulation    PC:   6 ADDR:   0 MEM_OUT:   0 TOS: 101 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101]
+  DEBUG   machine:simulation    PC:   7 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101]
+  DEBUG   machine:simulation    PC:   8 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND st        st
+  DEBUG   machine:signal_wr     output: 'uvusibun' << 'e'
+  INFO    machine:simulation    TOS: 101
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110]
+  DEBUG   machine:simulation    PC:   9 ADDR:   0 MEM_OUT:   0 TOS: 101 COMMAND push      push 0
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101]
+  DEBUG   machine:simulation    PC:  10 ADDR:   0 MEM_OUT:   0 TOS:   0 COMMAND jmp       jmp
+  INFO    machine:simulation    TOS: 101
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110]
+  DEBUG   machine:simulation    PC:   0 ADDR:   0 MEM_OUT:   0 TOS: 101 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101]
+  DEBUG   machine:simulation    PC:   1 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101]
+  DEBUG   machine:simulation    PC:   2 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND ld        ld
+  DEBUG   machine:get_char      input: 'k'
+  INFO    machine:simulation    TOS: 107
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101]
+  DEBUG   machine:simulation    PC:   3 ADDR:   0 MEM_OUT:   0 TOS: 107 COMMAND push      push 11
+  INFO    machine:simulation    TOS: 11
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107]
+  DEBUG   machine:simulation    PC:   4 ADDR:   0 MEM_OUT:   0 TOS:  11 COMMAND xchng     xchng
+  INFO    machine:simulation    TOS: 107
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 11]
+  DEBUG   machine:simulation    PC:   5 ADDR:   0 MEM_OUT:   0 TOS: 107 COMMAND jz        jz
+  INFO    machine:simulation    TOS: 107
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101]
+  DEBUG   machine:simulation    PC:   6 ADDR:   0 MEM_OUT:   0 TOS: 107 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107]
+  DEBUG   machine:simulation    PC:   7 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107]
+  DEBUG   machine:simulation    PC:   8 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND st        st
+  DEBUG   machine:signal_wr     output: 'uvusibune' << 'k'
+  INFO    machine:simulation    TOS: 107
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101]
+  DEBUG   machine:simulation    PC:   9 ADDR:   0 MEM_OUT:   0 TOS: 107 COMMAND push      push 0
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107]
+  DEBUG   machine:simulation    PC:  10 ADDR:   0 MEM_OUT:   0 TOS:   0 COMMAND jmp       jmp
+  INFO    machine:simulation    TOS: 107
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101]
+  DEBUG   machine:simulation    PC:   0 ADDR:   0 MEM_OUT:   0 TOS: 107 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107]
+  DEBUG   machine:simulation    PC:   1 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107]
+  DEBUG   machine:simulation    PC:   2 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND ld        ld
+  DEBUG   machine:get_char      input: 'a'
+  INFO    machine:simulation    TOS: 97
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107]
+  DEBUG   machine:simulation    PC:   3 ADDR:   0 MEM_OUT:   0 TOS:  97 COMMAND push      push 11
+  INFO    machine:simulation    TOS: 11
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97]
+  DEBUG   machine:simulation    PC:   4 ADDR:   0 MEM_OUT:   0 TOS:  11 COMMAND xchng     xchng
+  INFO    machine:simulation    TOS: 97
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 11]
+  DEBUG   machine:simulation    PC:   5 ADDR:   0 MEM_OUT:   0 TOS:  97 COMMAND jz        jz
+  INFO    machine:simulation    TOS: 97
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107]
+  DEBUG   machine:simulation    PC:   6 ADDR:   0 MEM_OUT:   0 TOS:  97 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97]
+  DEBUG   machine:simulation    PC:   7 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97]
+  DEBUG   machine:simulation    PC:   8 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND st        st
+  DEBUG   machine:signal_wr     output: 'uvusibunek' << 'a'
+  INFO    machine:simulation    TOS: 97
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107]
+  DEBUG   machine:simulation    PC:   9 ADDR:   0 MEM_OUT:   0 TOS:  97 COMMAND push      push 0
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97]
+  DEBUG   machine:simulation    PC:  10 ADDR:   0 MEM_OUT:   0 TOS:   0 COMMAND jmp       jmp
+  INFO    machine:simulation    TOS: 97
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107]
+  DEBUG   machine:simulation    PC:   0 ADDR:   0 MEM_OUT:   0 TOS:  97 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97]
+  DEBUG   machine:simulation    PC:   1 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97]
+  DEBUG   machine:simulation    PC:   2 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND ld        ld
+  DEBUG   machine:get_char      input: ' '
+  INFO    machine:simulation    TOS: 32
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97]
+  DEBUG   machine:simulation    PC:   3 ADDR:   0 MEM_OUT:   0 TOS:  32 COMMAND push      push 11
+  INFO    machine:simulation    TOS: 11
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32]
+  DEBUG   machine:simulation    PC:   4 ADDR:   0 MEM_OUT:   0 TOS:  11 COMMAND xchng     xchng
+  INFO    machine:simulation    TOS: 32
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 11]
+  DEBUG   machine:simulation    PC:   5 ADDR:   0 MEM_OUT:   0 TOS:  32 COMMAND jz        jz
+  INFO    machine:simulation    TOS: 32
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97]
+  DEBUG   machine:simulation    PC:   6 ADDR:   0 MEM_OUT:   0 TOS:  32 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32]
+  DEBUG   machine:simulation    PC:   7 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32]
+  DEBUG   machine:simulation    PC:   8 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND st        st
+  DEBUG   machine:signal_wr     output: 'uvusibuneka' << ' '
+  INFO    machine:simulation    TOS: 32
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97]
+  DEBUG   machine:simulation    PC:   9 ADDR:   0 MEM_OUT:   0 TOS:  32 COMMAND push      push 0
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32]
+  DEBUG   machine:simulation    PC:  10 ADDR:   0 MEM_OUT:   0 TOS:   0 COMMAND jmp       jmp
+  INFO    machine:simulation    TOS: 32
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97]
+  DEBUG   machine:simulation    PC:   0 ADDR:   0 MEM_OUT:   0 TOS:  32 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32]
+  DEBUG   machine:simulation    PC:   1 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32]
+  DEBUG   machine:simulation    PC:   2 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND ld        ld
+  DEBUG   machine:get_char      input: '\n'
+  INFO    machine:simulation    TOS: 10
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32]
+  DEBUG   machine:simulation    PC:   3 ADDR:   0 MEM_OUT:   0 TOS:  10 COMMAND push      push 11
+  INFO    machine:simulation    TOS: 11
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32, 10]
+  DEBUG   machine:simulation    PC:   4 ADDR:   0 MEM_OUT:   0 TOS:  11 COMMAND xchng     xchng
+  INFO    machine:simulation    TOS: 10
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32, 11]
+  DEBUG   machine:simulation    PC:   5 ADDR:   0 MEM_OUT:   0 TOS:  10 COMMAND jz        jz
+  INFO    machine:simulation    TOS: 10
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32]
+  DEBUG   machine:simulation    PC:   6 ADDR:   0 MEM_OUT:   0 TOS:  10 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32, 10]
+  DEBUG   machine:simulation    PC:   7 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32, 10]
+  DEBUG   machine:simulation    PC:   8 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND st        st
+  DEBUG   machine:signal_wr     output: 'uvusibuneka ' << '\n'
+  INFO    machine:simulation    TOS: 10
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32]
+  DEBUG   machine:simulation    PC:   9 ADDR:   0 MEM_OUT:   0 TOS:  10 COMMAND push      push 0
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32, 10]
+  DEBUG   machine:simulation    PC:  10 ADDR:   0 MEM_OUT:   0 TOS:   0 COMMAND jmp       jmp
+  INFO    machine:simulation    TOS: 10
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32]
+  DEBUG   machine:simulation    PC:   0 ADDR:   0 MEM_OUT:   0 TOS:  10 COMMAND push      push 3
+  INFO    machine:simulation    TOS: 3
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32, 10]
+  DEBUG   machine:simulation    PC:   1 ADDR:   0 MEM_OUT:   0 TOS:   3 COMMAND ld        ld
+  INFO    machine:get_char      data_address: 3
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32, 10]
+  DEBUG   machine:simulation    PC:   2 ADDR:   3 MEM_OUT:   0 TOS:   0 COMMAND ld        ld
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32, 10]
+  DEBUG   machine:simulation    PC:   3 ADDR:   0 MEM_OUT:   0 TOS:   0 COMMAND push      push 11
+  INFO    machine:simulation    TOS: 11
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32, 10, 0]
+  DEBUG   machine:simulation    PC:   4 ADDR:   0 MEM_OUT:   0 TOS:  11 COMMAND xchng     xchng
+  INFO    machine:simulation    TOS: 0
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32, 10, 11]
+  DEBUG   machine:simulation    PC:   5 ADDR:   0 MEM_OUT:   0 TOS:   0 COMMAND jz        jz
+  INFO    machine:simulation    TOS: 10
+  INFO    machine:simulation    STACK: [0, 117, 118, 117, 115, 105, 98, 117, 110, 101, 107, 97, 32]
+  DEBUG   machine:simulation    PC:  11 ADDR:   0 MEM_OUT:   0 TOS:  10 COMMAND hlt       hlt
+  INFO    machine:simulation    output_buffer: 'uvusibuneka \n'

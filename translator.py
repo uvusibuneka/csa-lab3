@@ -49,7 +49,7 @@ def translate_section_data(section_data, address, variables):
             variables[name] = variable
             address += 1
         elif is_string(value):
-            value = value.replace(r'\n', '\n')
+            value = value.replace(r"\n", "\n")
             chars = [ord(char) for char in value[1:-1]] + [0]
             variable = Variable(name, address, chars, True)
             variables[name] = variable
@@ -84,7 +84,7 @@ def translate_section_text_stage_1(section_text, address):
             labels[line[:-1]] = address
         else:
             commands.append(line)
-            address += 1 
+            address += 1
     return "\n".join(commands), labels
 
 
