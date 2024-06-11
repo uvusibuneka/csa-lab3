@@ -49,6 +49,7 @@ def translate_section_data(section_data, address, variables):
             variables[name] = variable
             address += 1
         elif is_string(value):
+            value = value.replace(r'\n', '\n')
             chars = [ord(char) for char in value[1:-1]] + [0]
             variable = Variable(name, address, chars, True)
             variables[name] = variable

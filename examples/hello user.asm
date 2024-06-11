@@ -1,5 +1,5 @@
 section .data:
-    hello: "\n>What is your name?\n>"
+    hello: "\n>What is your name?\n"
     bye: "\n>Hello, "
     io: 0
     buff: "                                       "
