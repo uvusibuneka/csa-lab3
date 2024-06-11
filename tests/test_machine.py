@@ -1,14 +1,15 @@
 import logging
 import os
-import tempfile
 import re
+import tempfile
+
 import pytest
-from pytest_diff import diff
 from machine import main as computer
 from translator import main as perform_translator
 
+
 def replace_multiple_spaces_with_one(s):
-    return re.sub(r'\s+', ' ', s)
+    return re.sub(r"\s+", " ", s)
 
 @pytest.mark.golden_test("golden/*.yml")
 def test_bar(golden, caplog):
@@ -40,4 +41,4 @@ def test_bar(golden, caplog):
         open("file_log.txt", "w").write(caplog.text)
         expected = replace_multiple_spaces_with_one(caplog.text.rstrip("\n").replace("\t","   "))
         result = replace_multiple_spaces_with_one(golden.out["out_log"].rstrip("\n").replace("\t","    "))
-        assert expected == result, "/n".join(diff(expected, result)).encode()
+        assert expected == result
