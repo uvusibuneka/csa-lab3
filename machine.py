@@ -218,8 +218,8 @@ class ControlUnit:
         if opcode is Opcode.CALL:
             self.signal_ret_push()
             self.program_counter = self.data_path.tos
-            self.address_command_reg = self.data_path.tos
             self.address_instr_mem = self.data_path.tos
+            self.data_path.signal_data_pop()
             return True
 
         if opcode is Opcode.RET:
@@ -369,7 +369,7 @@ def main(code_file, input_file):
         memory,
         input_tokens=input_token,
         data_memory_size=300,
-        limit=200,
+        limit=1000,
     )
 
     print("".join(output))

@@ -1,56 +1,63 @@
 section .data:
     hello: "\n>What is your name?\n\0>"
     bye: "\n>Hello, \0"
-    io_addr: 0
+    io: 0
     buff: "                                       "
 section .text:
 .start:
-    push .back_name
+
     push hello
     push .print
-    jmp print
-.back_name:
+    call
 
     push buff
-.loop_read:
-    dup
-    dup
-    jz .end_read
-    push io_addr
-    ld
-    dup
-    jz
-    st
-    inc
-.end_read:
-    pop
+    push .read
+    call
 
-    push .back_bye
     push bye
-    push print
-    jmp
+    push .print
+    call
 
-.back_bye:
-    push .hlt
     push buff
     push .print
-    jmp
+    call
+
 .hlt:
     hlt
 
 .print:
-.loop_print:
+.loop:
     dup
-    dup
-    push .end_print
+    ld
+    push .break
+    xchng
     jz
-    push io_addr
+    push io
+    ld
     st
-    inc
-    push .loop_print
-    jmp
-.end_print:
     pop
+    inc
+    push .loop
     jmp
+.break:
+    pop
+    ret
 
+.read:
+.read_loop:
+    dup
+    push io
+    ld
+    ld
+    xchng
+    st
+    push .end_read
+    xchng
+    jz
+    pop
+    inc
+    push .read_loop
+    jmp
+.end_read:
+    ret
     
