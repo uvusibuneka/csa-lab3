@@ -1,6 +1,6 @@
 section .data:
-    hello: "\n>What is your name?\n>"
-    bye: "\n>Hello, "
+    hello: "\n>What is your name?\n\0>"
+    bye: "\n>Hello, \0"
     io_addr: 0
     buff: "                                       "
 section .text:
@@ -15,11 +15,11 @@ section .text:
 .loop_read:
     dup
     dup
-    je .end_read
+    jz .end_read
     push io_addr
     ld
     dup
-    je
+    jz
     st
     inc
 .end_read:
@@ -43,7 +43,7 @@ section .text:
     dup
     dup
     push .end_print
-    je
+    jz
     push io_addr
     st
     inc

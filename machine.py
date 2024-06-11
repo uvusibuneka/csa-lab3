@@ -6,7 +6,7 @@ from __future__ import annotations
 import logging
 import sys
 
-from constants import IO_ADDRESS
+from constants import IO_ADDRESS, IO_ADDRESS_NUM
 from isa import Command, Opcode, read_from_json
 
 
@@ -92,10 +92,15 @@ class DataPath:
                 "output: %s << %s", repr("".join(self.output_buffer)), repr(symbol)
             )
             self.output_buffer.append(symbol)
+        elif self.data_address  == IO_ADDRESS_NUM:
+            self.signal_data_pop()
+            symbol = str(self.tos)
+            logging.debug(
+                "output: %s << %s", repr("".join(self.output_buffer)), repr(symbol)
+            )
+            self.output_buffer.append(symbol)
         else:
-            self.signal_data_push()
             self.data_memory[self.data_address] = self.signal_data_pop()
-            self.tos = self.signal_data_pop()
 
     def zero(self):
         return self.tos == 0
@@ -162,6 +167,7 @@ class ControlUnit:
             if self.data_path.zero():
                 self.program_counter = self.data_path.signal_data_pop()
                 self.address_instr_mem = self.program_counter
+                self.data_path.signal_data_pop()
                 return True
             else:
                 self.data_path.data_stack.pop()
@@ -170,32 +176,44 @@ class ControlUnit:
             if not self.data_path.zero():
                 self.program_counter = self.data_path.tos
                 self.address_instr_mem = self.program_counter
+                self.data_path.signal_data_pop()
                 return True
+            else:
+                self.data_path.data_stack.pop()
 
         if opcode is Opcode.JL:
             if self.data_path.negative():
-                self.program_counter = self.data_path.tos
+                self.program_counter = self.data_path.signal_data_pop()
                 self.address_instr_mem = self.program_counter
+                self.data_path.signal_data_pop()
                 return True
+            else:
+                self.data_path.data_stack.pop()
 
         if opcode is Opcode.JG:
             if not self.data_path.negative() and not self.data_path.zero():
                 self.program_counter = self.data_path.tos
                 self.address_instr_mem = self.program_counter
-
+                self.data_path.signal_data_pop()
                 return True
 
         if opcode is Opcode.JGE:
-            if not self.data_path.negative():
+            if not self.data_path.negative() or self.data_path.zero():
                 self.program_counter = self.data_path.tos
                 self.address_instr_mem = self.program_counter
+                self.data_path.signal_data_pop()
                 return True
+            else:
+                self.data_path.data_stack.pop()
 
-        if opcode is Opcode.JL:
+        if opcode is Opcode.JLE:
             if self.data_path.negative() or self.data_path.zero():
-                self.program_counter = self.data_path.tos
+                self.program_counter = self.data_path.signal_data_pop()
                 self.address_instr_mem = self.program_counter
+                self.data_path.signal_data_pop()
                 return True
+            else:
+                self.data_path.data_stack.pop()
 
         if opcode is Opcode.CALL:
             self.signal_ret_push()
@@ -239,6 +257,7 @@ class ControlUnit:
             self.data_path.signal_address()
             self.data_path.signal_wr()
 
+
         if opcode == Opcode.LD:
             self.data_path.signal_latch_ar()
             self.data_path.signal_address()
@@ -250,25 +269,27 @@ class ControlUnit:
             )
 
         if opcode == Opcode.ADD:
-            self.data_path.signal_latch_tos(self.data_path.signal_data_pop())
             self.data_path.signal_latch_tos(
-                self.data_path.signal_data_pop() + self.data_path.tos
+                    self.data_path.data_stack[-1] + self.data_path.tos
             )
 
         if opcode == Opcode.SUB:
             self.data_path.signal_latch_tos(
-                self.data_path.signal_data_pop() - self.data_path.tos
+                -self.data_path.data_stack[-1]+ self.data_path.tos
             )
+            self.data_path.data_stack.pop()
 
         if opcode == Opcode.OR:
             self.data_path.signal_latch_tos(
-                self.data_path.signal_data_pop() | self.data_path.tos
+                self.data_path.data_stack[-1] | self.data_path.tos
             )
+            self.data_path.signal_latch_tos(self.data_path.signal_data_pop())
 
         if opcode == Opcode.AND:
             self.data_path.signal_latch_tos(
-                self.data_path.signal_data_pop() & self.data_path.tos
+                self.data_path.data_stack[-1] & self.data_path.tos
             )
+            self.data_path.data_stack.pop()
         if opcode == Opcode.XCHNG:
             self.data_path.signal_latch_br(self.data_path.data_stack[-1])
             self.data_path.data_stack.pop()
@@ -348,7 +369,7 @@ def main(code_file, input_file):
         memory,
         input_tokens=input_token,
         data_memory_size=300,
-        limit=1000,
+        limit=200,
     )
 
     print("".join(output))

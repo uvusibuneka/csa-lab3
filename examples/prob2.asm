@@ -1,55 +1,45 @@
 section .data:
-    io_addr: 0
-    a: 1
-    b: 2
-    border: 10
-    even: 1
-    res: 0
+   res: 2
+   io: 1
+   border: 100
 section .text:
 .start:
+   push 1
+   push 2
 .loop:
-   push b
-   ld
-   dup
-   dup
-   push a
-   ld
-
-   dup
-   push even
-   ld
-   and
-   push even
-   ld
-   sub
-   push .even
+   xchng 
+   add
    xchng
-   jz
-   pop
-.back:
+   add
+   xchng 
    add
 
-   push b
-   st
-   push a
-   st
-   push b
-   ld
+   dup
    push border
    ld
-   sub
-   jge .hlt
+   sub 
+   push .end_loop
+   xchng
+   jle
+   pop
+   
+   push res
+   ld
+   add
+   push res
+   st
+   pop
+   
    push .loop
    jmp
-.hlt:
-    hlt
-
-.even:
-    push res
-    ld
-    add
-    push res
-    st
-    push .back
-    jmp
+.end_loop:
+   pop
+   pop
+   push res
+   ld
+   push io
+   ld
+   st
+   pop
+   hlt
 
