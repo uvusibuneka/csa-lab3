@@ -1,6 +1,6 @@
 section .data:
-    hello: "\n>What is your name?\n\0>"
-    bye: "\n>Hello, \0"
+    hello: "\n>What is your name?\n>"
+    bye: "\n>Hello, "
     io: 0
     buff: "                                       "
 section .text:

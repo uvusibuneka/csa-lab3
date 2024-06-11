@@ -1,5 +1,5 @@
 section .data:
-    hello: "Hello, world!\n\0"
+    hello: "Hello, world!\n"
 section .text:
 .start:
     push hello
