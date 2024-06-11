@@ -1,6 +1,6 @@
 targetfile.txt
 proc_scheme.png
 __pycache__/*
-input.txt
+input*.txt
 output.txt
 

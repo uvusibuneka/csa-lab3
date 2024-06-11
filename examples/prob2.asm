@@ -2,8 +2,9 @@ section .data:
     io_addr: 0
     a: 1
     b: 2
-    border: 100
+    border: 10
     even: 1
+    res: 0
 section .text:
 .start:
 .loop:
@@ -16,11 +17,14 @@ section .text:
 
    dup
    push even
+   ld
    and
    push even
+   ld
    sub
    push .even
-   jn
+   xchng
+   jz
    pop
 .back:
    add

@@ -1,15 +1,17 @@
 section .data:
-    io: .word 0
-
-section .text
+    io: 0
+section .text:
 .start:
 .loop:
     push io
     ld
-    push io
-    st
+    ld
     push .exit
+    xchng
     jz
+    push io
+    ld
+    st
     push .loop
     jmp
 .exit:

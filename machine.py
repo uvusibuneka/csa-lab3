@@ -70,7 +70,7 @@ class DataPath:
     def get_char(self):
         if self.data_address == IO_ADDRESS:
             if len(self.input_buffer) == 0:
-                raise EOFError()
+                return ord("\0")
             symbol = self.input_buffer.pop(0)
             symbol_code = ord(symbol)
             assert -128 <= symbol_code <= 127, "input token is out of bound: {}".format(
@@ -256,19 +256,16 @@ class ControlUnit:
             )
 
         if opcode == Opcode.SUB:
-            self.data_path.signal_latch_tos(self.data_path.signal_data_pop())
             self.data_path.signal_latch_tos(
                 self.data_path.signal_data_pop() - self.data_path.tos
             )
 
         if opcode == Opcode.OR:
-            self.data_path.signal_latch_tos(self.data_path.signal_data_pop())
             self.data_path.signal_latch_tos(
                 self.data_path.signal_data_pop() | self.data_path.tos
             )
 
         if opcode == Opcode.AND:
-            self.data_path.signal_latch_tos(self.data_path.signal_data_pop())
             self.data_path.signal_latch_tos(
                 self.data_path.signal_data_pop() & self.data_path.tos
             )
