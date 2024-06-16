@@ -158,11 +158,9 @@ def translate_source(source):
     section_text, labels = translate_section_text_stage_1(
         section_text, section_text_address
     )
-    print(labels)
     commands = translate_section_text_stage_2(section_text, variables, labels)
     code : list[tuple[str,str,str]] = []
     memory : list[tuple[str,str]] = []
-    print(labels)
     command_address = 0
     memory_address = 3
     memory, memory_address = translate_variables(
