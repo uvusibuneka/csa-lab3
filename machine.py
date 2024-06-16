@@ -292,13 +292,7 @@ class ControlUnit:
             self.data_path.signal_bf_to_tos()
 
         if opcode == Opcode.DUP:
-            self.data_path.signal_data_push()
-
-        if opcode == Opcode.PRINT:
-            self.data_path.signal_latch_tos(IO_ADDRESS)
-            self.data_path.signal_latch_ar()
-            self.data_path.signal_latch_tos(self.data_path.signal_data_pop())
-            self.data_path.signal_wr()
+            self.data_path.signal_data_push() 
 
         self.signal_latch_program_counter(sel_next=True)
 
