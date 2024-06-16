@@ -44,9 +44,6 @@ class Opcode(str, Enum):
     SUB = "sub"
     OR = "or"
     AND = "and"
-    PRINT = "print"
-    INPUT = "input"
-    IO_STATUS = "io_status"
     HALT = "hlt"
 
     def __str__(self):
