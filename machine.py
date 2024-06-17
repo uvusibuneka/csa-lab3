@@ -292,7 +292,7 @@ class ControlUnit:
             self.data_path.signal_bf_to_tos()
 
         if opcode == Opcode.DUP:
-            self.data_path.signal_data_push() 
+            self.data_path.signal_data_push()
 
         self.signal_latch_program_counter(sel_next=True)
 
